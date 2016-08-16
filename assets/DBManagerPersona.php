@@ -88,6 +88,7 @@ class DBManagerPersona extends DB
         try
         {
             $sql = 'DELETE FROM persona WHERE id = :id';
+            
             $statement = $this->getConexion()->prepare($sql);
             $statement->bindValue(':id', $id);
             $statement->execute();
@@ -95,6 +96,8 @@ class DBManagerPersona extends DB
         }catch(PDOException $e){
             echo $sql . "<br>" . $e->getMessage();
         }
+
+        return false;
     }
 
     public function getTableName()

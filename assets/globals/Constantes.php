@@ -15,10 +15,20 @@ namespace assets\globals;
  */
 final class Constantes 
 {	
+    /**
+     * General
+     */
+    const STATUS_ACTIVE = 1;
+
+    /**
+     * Rutas
+     */
+    const MIN_PARAMS_GET = 2;
+
 	/**
-	 * Registros 
+	 * Servicios
 	 */
-	const STATUS_ACTIVE = 1;
+	const NAME_ACTION_PERSONA = "personas";
 
 	/**	
 	 * Parametros DB
@@ -32,16 +42,9 @@ final class Constantes
     /**
      * Codigos HTTP
      */
-    const CODE_INTERNAL_SERVER_ERROR = 500;
-    const CODE_UNPROCESSABLE_ENTITY = 422;
-    const CODE_BAD_REQUEST = 400;
+    const CODE_REQUEST_SUCCESS = 200;
     const CODE_NOT_CONTENT = 204;
-
-    /**
-     * Mensajes Codigos HTTP
-     */
-    const MSG_CODE_INTERNAL_SERVER_ERROR = 'Se ha producido un error interno.';
-    const MSG_CODE_UNPROCESSABLE_ENTITY = 'Entidad no procesable.';
-    const MSG_CODE_BAD_REQUEST = 'La solicitud contiene sintaxis errónea.';
-    const MSG_CODE_NOT_CONTENT = 'La petición se ha completado con éxito pero su respuesta no tiene ningún contenido';    
+    const CODE_BAD_REQUEST = 400;
+    const CODE_UNPROCESSABLE_ENTITY = 422;
+    const CODE_INTERNAL_SERVER_ERROR = 500;
 }
