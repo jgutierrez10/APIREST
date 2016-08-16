@@ -14,7 +14,9 @@ namespace assets\globals;
  * @author Jesus Gutierrez <jesusdavid1004@gmail.com>
  */
 final class Constantes 
-{
+{	
+	const STATUS_ACTIVE = 1;
+
     const DB_ADMIN = 'mysql';
     
     const DB_SERVER = 'localhost';

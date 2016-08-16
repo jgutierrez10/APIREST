@@ -6,4 +6,5 @@
     use assets\API;
 
     $api = new API();
+    
     $api->routeConfig();

@@ -8,7 +8,7 @@
 
 namespace assets;
 
-use assets\DBManager;
+use assets\DBManagerPersona;
 
 /**
  * API REST
