@@ -26,7 +26,7 @@ class DB
     	try{
     		$this->_conexion = new PDO('mysql:host=localhost;dbname='.Constantes::DB_NAME, Constantes::DB_USERNAME, Constantes::DB_PASSWORD);
 		}catch (PDOException $e){
-  			echo $e->getMessage().'<br>';
+            http_response_code(500);
 		}
     }
 

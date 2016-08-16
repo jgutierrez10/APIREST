@@ -10,6 +10,9 @@ namespace assets;
 
 use assets\DBManagerPersona;
 
+use assets\globals\Constantes;
+use assets\globals\Funciones;
+
 /**
  * API REST
  *
@@ -18,6 +21,13 @@ use assets\DBManagerPersona;
 
 class API
 {
+	private $_dbManagerPersona;
+
+	public function __construct()
+	{
+		$this->_dbManagerPersona = new DBManagerPersona();
+	}
+
 	public function routeConfig()
 	{
         header('Content-Type: application/JSON');                
@@ -27,7 +37,7 @@ class API
         switch ($method) 
         {
 	        case 'GET'://consulta
-	            echo 'GET';
+	            $this->getPersonas();
 	            break;     
 	        case 'POST'://inserta
 	            echo 'POST';
@@ -42,6 +52,42 @@ class API
 	            echo 'METODO NO SOPORTADO';
 	            break;
 	    }
-    }	
-}
+    }
 
+ 	private function response($code=200, $status="", $message="")
+ 	{
+    	http_response_code($code);
+
+    	if(!empty($status) && !empty($message))
+    	{
+        	$response = ["status" => $status , "message"=>$message];  
+
+        	echo json_encode($response,JSON_PRETTY_PRINT);    
+    	}            
+ 	}
+
+	private function getPersonas()
+	{
+		$arrRuta = explode('/', Funciones::cleanRoute($_SERVER['REQUEST_URI']));
+		$action = (!empty($arrRuta[1])) ? $arrRuta[1] : "";
+		$param = (!empty($arrRuta[2])) ? $arrRuta[2] : "";
+
+	    if($action == 'personas')
+	    {               
+	        if(!empty($param))
+	        {
+	            $response = $this->_dbManagerPersona->obtenerPersona($param);                
+	        }
+	        else
+	        {     
+	        	$response = $this->_dbManagerPersona->obtenerPersonas();                
+	        }
+
+	        echo json_encode($response,JSON_PRETTY_PRINT);
+	    }
+	    else
+	    {
+	    	$this->response(Constantes::CODE_BAD_REQUEST);
+	    }
+	}  
+}

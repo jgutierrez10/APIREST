@@ -28,7 +28,7 @@ class DBManagerPersona extends DB
     	parent::__construct();
     }
 
-    public function getPersonas()
+    public function obtenerPersonas()
     {
         $sql = 'SELECT * FROM persona AS p ORDER BY p.id ASC';
 
@@ -38,7 +38,7 @@ class DBManagerPersona extends DB
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getPersona($id = 0)
+    public function obtenerPersona($id = 0)
     {   
         $sql = 'SELECT * FROM persona AS p WHERE p.id = :id AND p.activo = :activo';
 
@@ -50,7 +50,7 @@ class DBManagerPersona extends DB
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function addPersona($nombre, $apellido, $cedula)
+    public function agregarPersona($nombre, $apellido, $cedula)
     {
         try
         {
@@ -66,7 +66,7 @@ class DBManagerPersona extends DB
         }
     }
 
-    public function editPersona($id, $nombre, $apellido, $cedula)
+    public function editarPersona($id, $nombre, $apellido, $cedula)
     {
         try
         {
@@ -83,7 +83,7 @@ class DBManagerPersona extends DB
         }
     }
 
-    public function deletePersona($id)
+    public function eliminarPersona($id)
     {
         try
         {
